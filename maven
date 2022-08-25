@@ -1,0 +1,18 @@
+wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+
+sudo nano /etc/profile.d/maven.sh
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+sudo chmod +x /etc/profile.d/maven.sh
+
+source /etc/profile.d/maven.sh
+
+#update simlink if needed
+cd /etc/alternatives
+ln -sfn mvn -> /opt/maven/bin/mvn
+ln -sfn mvnDebug -> /opt/maven/bin/mvnDebug
